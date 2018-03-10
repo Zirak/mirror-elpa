@@ -35,3 +35,6 @@ That's pretty much it.
 - [ ] Make the code better you potato-eater
 - [ ] uugghh maybe namespacing?
 - [ ] Burn the crops
+
+** License
+[[http://www.wtfpl.net/][WTFPL]]
