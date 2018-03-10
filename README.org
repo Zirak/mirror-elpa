@@ -1,0 +1,37 @@
+Mirrors package.el repositories. Delivers packages to orphans. Saves the world. Burns your crops.
+
+** Usage
+
+#+BEGIN_SRC elisp
+(mirror-repositories package-archives "package-mirror")
+;; or a specific repository
+(mirror-repository '("melpa" . "https://melpa.org/packages/") "melpa")
+#+END_SRC
+
+And start an http server in that folder, e.g. =python3 -m http.server=
+
+** Know-how
+
+A repository has an =archive-contents= file which is a list which looks like:
+
+#+BEGIN_SRC elisp
+(1 (package-name . [version-list dependencies description package-type metadata])
+   (package-name ...))
+#+END_SRC
+
+Now! To package's url is formatted as:
+
+=repository-url/$packageName-$packageVersion.$packageType=
+
+=package-version= is a list of numbers. So far I've seen as few as 1, and as many as 3, but there may be more! When fetching the url they're formatted with a dot inbetween.
+
+=package-type= is either =single= (an =.el= file) or =tar=, which affects the file extension.
+
+That's pretty much it.
+
+** Things
+- [ ] Wrap it into a script
+  - =emacs -Q mirror.el repository=
+- [ ] Make the code better you potato-eater
+- [ ] uugghh maybe namespacing?
+- [ ] Burn the crops
